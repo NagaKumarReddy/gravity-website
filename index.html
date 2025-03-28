@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
   <script>
     tailwind.config = {
       theme: {
@@ -21,6 +22,7 @@
             'pulse-slow': 'pulse 5s ease-in-out infinite',
             'spin-slow': 'spin 20s linear infinite',
             'orbit': 'orbit 20s linear infinite',
+            'bounce-slow': 'bounce 3s infinite',
           },
           keyframes: {
             float: {
@@ -128,6 +130,21 @@
       50% { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
     }
+    .gallery-item {
+      transition: all 0.3s ease;
+      transform: scale(1);
+    }
+    .gallery-item:hover {
+      transform: scale(1.03);
+      z-index: 10;
+    }
+    .lightbox-image {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .lightbox-image:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
@@ -152,7 +169,7 @@
         <!-- Logo with Animation -->
         <div class="flex-shrink-0">
           <div class="relative h-12 w-12 rounded-full bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center glow-effect hover:rotate-45 transition-all duration-500">
-            <span class="text-white font-bold text-xl font-orbitron">G</span>
+            <img src="https://via.placeholder.com/50x50/a855f7/ffffff?text=G" alt="Gravity Logo" class="rounded-full">
             <div class="absolute inset-0 rounded-full border-2 border-purple-400 opacity-0 hover:opacity-100 animate-ping duration-1000"></div>
           </div>
         </div>
@@ -163,6 +180,7 @@
             <a href="#welcome" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium font-orbitron transition-all duration-300 hover:bg-purple-900/30 hover:scale-105">Home</a>
             <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium font-orbitron transition-all duration-300 hover:bg-purple-900/30 hover:scale-105">About</a>
             <a href="#events" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium font-orbitron transition-all duration-300 hover:bg-purple-900/30 hover:scale-105">Events</a>
+            <a href="#gallery" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium font-orbitron transition-all duration-300 hover:bg-purple-900/30 hover:scale-105">Gallery</a>
             <a href="#sunshine" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium font-orbitron transition-all duration-300 hover:bg-purple-900/30 hover:scale-105">Sunshine</a>
             <a href="#future" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium font-orbitron transition-all duration-300 hover:bg-purple-900/30 hover:scale-105">Future</a>
             <a href="#contact" class="ml-6 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white text-sm font-medium font-orbitron rounded-full hover:from-purple-700 hover:to-blue-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/30">
@@ -188,6 +206,7 @@
         <a href="#welcome" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-purple-900/30 transition duration-150 ease-in-out">Home</a>
         <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-purple-900/30 transition duration-150 ease-in-out">About</a>
         <a href="#events" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-purple-900/30 transition duration-150 ease-in-out">Events</a>
+        <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-purple-900/30 transition duration-150 ease-in-out">Gallery</a>
         <a href="#sunshine" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-purple-900/30 transition duration-150 ease-in-out">Sunshine</a>
         <a href="#future" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-purple-900/30 transition duration-150 ease-in-out">Future</a>
         <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-purple-600 to-blue-500 mt-2 text-center hover:from-purple-700 hover:to-blue-600 transition duration-150 ease-in-out">
@@ -574,6 +593,103 @@
     </div>
   </section>
 
+  <!-- Gallery Section -->
+  <section id="gallery" class="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 font-orbitron">
+          <span class="gradient-text">Our Gallery</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 mx-auto mb-6"></div>
+        <p class="text-lg max-w-3xl mx-auto opacity-90">
+          Capturing the memorable moments from our events and initiatives
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="lightgallery">
+        <!-- Gallery Item 1 -->
+        <a href="https://via.placeholder.com/800x600/a855f7/ffffff?text=Event+1" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/a855f7/ffffff?text=Event+1" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">GTalks Session</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 2 -->
+        <a href="https://via.placeholder.com/800x600/3b82f6/ffffff?text=Event+2" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/3b82f6/ffffff?text=Event+2" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">Contest of Champions</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 3 -->
+        <a href="https://via.placeholder.com/800x600/ec4899/ffffff?text=Event+3" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/ec4899/ffffff?text=Event+3" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">Share Smiles Initiative</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 4 -->
+        <a href="https://via.placeholder.com/800x600/a855f7/ffffff?text=Event+4" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/a855f7/ffffff?text=Event+4" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">Google Cloud Workshop</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 5 -->
+        <a href="https://via.placeholder.com/800x600/3b82f6/ffffff?text=Event+5" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/3b82f6/ffffff?text=Event+5" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">Hair Donation Camp</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 6 -->
+        <a href="https://via.placeholder.com/800x600/ec4899/ffffff?text=Event+6" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/ec4899/ffffff?text=Event+6" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">Education Camp</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 7 -->
+        <a href="https://via.placeholder.com/800x600/a855f7/ffffff?text=Event+7" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/a855f7/ffffff?text=Event+7" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">G-Blogs Workshop</h3>
+            </div>
+          </div>
+        </a>
+        
+        <!-- Gallery Item 8 -->
+        <a href="https://via.placeholder.com/800x600/3b82f6/ffffff?text=Event+8" class="gallery-item">
+          <div class="relative overflow-hidden rounded-xl h-64 group">
+            <img src="https://via.placeholder.com/400x300/3b82f6/ffffff?text=Event+8" alt="Event Photo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <h3 class="text-white font-semibold">Virtual Ceremony</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Sunshine Social Initiatives Section -->
   <section id="sunshine" class="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-gray-800">
     <div class="max-w-7xl mx-auto">
@@ -852,7 +968,7 @@
         <div>
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full flex items-center justify-center mr-3">
-              <span class="text-white font-bold text-lg font-orbitron">G</span>
+              <img src="https://via.placeholder.com/30x30/a855f7/ffffff?text=G" alt="Gravity Logo" class="rounded-full">
             </div>
             <span class="text-xl font-bold text-white font-orbitron">Gravity Club</span>
           </div>
@@ -887,6 +1003,7 @@
             <li><a href="#welcome" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Home</a></li>
             <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">About Us</a></li>
             <li><a href="#events" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Events</a></li>
+            <li><a href="#gallery" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Gallery</a></li>
             <li><a href="#sunshine" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Sunshine</a></li>
             <li><a href="#future" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Future Plans</a></li>
             <li><a href="#contact" class="text-gray-400 hover:text-purple-400 transition-colors duration-300">Contact</a></li>
@@ -928,7 +1045,15 @@
   </button>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
   <script>
+    // Initialize lightGallery
+    lightGallery(document.getElementById('lightgallery'), {
+      selector: 'a',
+      download: false,
+      counter: false
+    });
+
     // Mobile Menu Toggle
     function toggleMenu() {
       const menu = document.getElementById('mobileMenu');
@@ -1042,9 +1167,15 @@
             animateCountUp();
             observer.unobserve(entry.target);
           }
+          entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
 
     countUpElements.forEach(element => {
       observer.observe(element);
